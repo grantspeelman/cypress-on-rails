@@ -13,8 +13,11 @@ echo '-- bundle install'
 bundle --version
 bundle install --quiet --gemfile="$DIR/Gemfile" --retry 2 --path vendor/bundle
 
+echo '-- migration'
+bin/rails db:migrate
+
 echo '-- cypress install'
-bundle exec ./bin/rails g cypress_dev:install
+bundle exec ./bin/rails g cypress_dev:install --cypress_folder=test/cypress --no-install-cypress-examples
 
 echo '-- start rails server'
 # make sure the server is not running
@@ -24,8 +27,8 @@ bundle exec ./bin/rails server -p 5002 -e test &
 sleep 2 # give rails a chance to start up correctly
 
 echo '-- cypress run'
-cd spec
+cd test
 yarn run cypress run
 
 echo '-- stop rails server'
-kill -9 `cat ../tmp/pids/server.pid`
+kill -9 `cat tmp/pids/server.pid` || true
