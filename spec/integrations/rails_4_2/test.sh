@@ -25,7 +25,7 @@ sleep 2 # give rails a chance to start up correctly
 
 echo '-- cypress run'
 cd test
-yarn run cypress run
+yarn run cypress run --record
 
 echo '-- stop rails server'
 kill -9 `cat ../tmp/pids/server.pid`
