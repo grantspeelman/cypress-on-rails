@@ -20,7 +20,7 @@ module CypressDev
           say command
           fail 'failed to install cypress' unless system(command)
         end
-        if options.install_with_examples
+        if options.install_cypress_examples
           directory 'spec/cypress/integration/examples', "#{options.cypress_folder}/integration/examples"
         end
         copy_file "spec/cypress/support/index.js", "#{options.cypress_folder}/support/index.js"
