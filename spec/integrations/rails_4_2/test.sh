@@ -24,6 +24,7 @@ bundle exec ./bin/rails server -p 5002 -e test &
 sleep 2 # give rails a chance to start up correctly
 
 echo '-- cypress run'
+cp -fv ../cypress.json test/
 cd test
 yarn run cypress run --record
 
