@@ -22,6 +22,7 @@ module CypressDev
         end
         if options.install_cypress_examples
           directory 'spec/cypress/integration/examples', "#{options.cypress_folder}/integration/examples"
+          directory 'spec/cypress/fixtures', "#{options.cypress_folder}/fixtures"
         end
         copy_file "spec/cypress/support/index.js", "#{options.cypress_folder}/support/index.js"
         copy_file "spec/cypress/support/commands.js", "#{options.cypress_folder}/support/commands.js"
