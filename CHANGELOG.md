@@ -1,4 +1,7 @@
-## 1.0.1
+### Tasks
+* add active record integration specs
+
+ 1.0.1
 ### Fixed
 * install generator adding on-rails.js to import.js
 
