@@ -34,10 +34,7 @@ module CypressDev
       template "config/initializers/cypress_dev.rb.erb", "config/initializers/cypress_dev.rb"
       copy_file "spec/cypress/cypress_helper.rb", "#{options.cypress_folder}/cypress_helper.rb"
       copy_file "spec/cypress/support/on-rails.js", "#{options.cypress_folder}/support/on-rails.js"
-      copy_file "spec/cypress/app_commands/scenarios/basic.rb", "#{options.cypress_folder}/app_commands/scenarios/basic.rb"
-      copy_file "spec/cypress/app_commands/clean.rb", "#{options.cypress_folder}/app_commands/clean.rb"
-      copy_file "spec/cypress/app_commands/eval.rb", "#{options.cypress_folder}/app_commands/eval.rb"
-      copy_file "spec/cypress/app_commands/factory_bot.rb", "#{options.cypress_folder}/app_commands/factory_bot.rb"
+      directory 'spec/cypress/app_commands', "#{options.cypress_folder}/app_commands"
       directory 'spec/cypress/integration/rails_examples', "#{options.cypress_folder}/integration/rails_examples"
     end
 
