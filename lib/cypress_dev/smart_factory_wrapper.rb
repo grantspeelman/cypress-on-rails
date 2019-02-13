@@ -28,6 +28,14 @@ module CypressDev
       instance.create_list(*args)
     end
 
+    def self.build(*args)
+      instance.build(*args)
+    end
+
+    def self.build_list(*args)
+      instance.build_list(*args)
+    end
+
     # @return [Array]
     attr_accessor :factory
     attr_accessor :always_reload
@@ -53,6 +61,16 @@ module CypressDev
     def create_list(*args)
       load_files
       factory.create_list(*args)
+    end
+
+    def build(*args)
+      load_files
+      factory.build(*args)
+    end
+
+    def build_list(*args)
+      load_files
+      factory.build_list(*args)
     end
 
     private

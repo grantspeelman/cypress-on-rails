@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/grantspeelman/cypress-on-rails.svg?branch=master)](https://travis-ci.org/grantspeelman/cypress-on-rails)
 
-Gem for using [cypress.io](http://github.com/cypress-io/) in Rails and ruby rack applications 
+Gem for using [cypress.io](http://github.com/cypress-io/) in Rails and ruby rack applications
 with the goal of controlling State as mentioned in [Cypress Best Practices](https://docs.cypress.io/guides/references/best-practices.html#Organizing-Tests-Logging-In-Controlling-State)
 
 It allows to run code in the application context when executing cypress tests.
@@ -82,7 +82,7 @@ CypressDev::SmartFactoryWrapper.configure(
     always_reload: !Rails.configuration.cache_classes,
     factory: FactoryBot,
     files: Dir['./spec/factories/**/*.rb']
-) 
+)
 ```
 
 ```js
@@ -141,7 +141,8 @@ You define a scenario in the `spec/cypress/app_commands/scenarios` directory:
 Profile.create name: "Cypress Hill"
 
 # or if you have factory_bot enabled in your cypress_helper
-CypressDev::SmartFactoryWrapper.create(:profile, name: "Cypress Hill") 
+CypressDev::SmartFactoryWrapper.build(:profile, name: "Cypress Hill")
+CypressDev::SmartFactoryWrapper.create(:profile, name: "Cypress Hill")
 ```
 
 Then reference the scenario in your test:
@@ -163,8 +164,8 @@ describe('My First Test', function() {
 
 create a ruby file in `spec/cypress/app_commands` directory:
 ```ruby
-# spec/cypress/app_commands/load_seed.rb 
-load "#{Rails.root}/db/seeds.rb" 
+# spec/cypress/app_commands/load_seed.rb
+load "#{Rails.root}/db/seeds.rb"
 ```
 
 Then reference the command in your test with `cy.app('load_seed')`:
@@ -172,7 +173,7 @@ Then reference the command in your test with `cy.app('load_seed')`:
 // spec/cypress/integrations/simple_spec.js
 describe('My First Test', function() {
   beforeEach(() => { cy.app('load_seed') })
-  
+
   it('visit root', function() {
     cy.visit('/')
 
@@ -195,7 +196,7 @@ CypressDev.configure do |c|
 end
 use CypressDev::Middleware
 
-run MyApp 
+run MyApp
 ```
 
 add the following file to cypress

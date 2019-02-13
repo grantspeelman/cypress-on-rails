@@ -10,7 +10,7 @@ RSpec.describe CypressDev::SmartFactoryWrapper do
   let(:time_now) { Time.now }
   let(:mtime_hash) { {'file1.rb' => time_now, 'file2.rb' => time_now } }
   let(:files) { %w(file1.rb file2.rb) }
-  let(:factory_double) { double('FactoryBot', create: true, create_list: true) }
+  let(:factory_double) { double('FactoryBot', create: true, create_list: true, build: true, build_list: true) }
   let(:factory_cleaner) { class_double(CypressDev::SmartFactoryWrapper::FactoryCleaner, clean: true) }
   let(:kernel_double) { class_double(Kernel, load: true) }
   let(:file_double) { FileSystemDummy.new(mtime_hash) }
@@ -49,6 +49,16 @@ RSpec.describe CypressDev::SmartFactoryWrapper do
   it 'it sends delegates create_list to the factory' do
     subject.create_list(:note, 10)
     expect(factory_double).to have_received(:create_list).with(:note, 10)
+  end
+
+  it 'it sends delegates build to the factory' do
+    subject.build(:user)
+    expect(factory_double).to have_received(:build).with(:user)
+  end
+
+  it 'it sends delegates build_list to the factory' do
+    subject.build_list(:note, 10)
+    expect(factory_double).to have_received(:build_list).with(:note, 10)
   end
 
   it 'wont load the files if they have not changed' do
