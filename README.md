@@ -1,3 +1,6 @@
+Main Repo can be found here:
+https://github.com/shakacode/cypress-on-rails
+
 # CypressDev
 
 [![Build Status](https://travis-ci.org/grantspeelman/cypress-on-rails.svg?branch=master)](https://travis-ci.org/grantspeelman/cypress-on-rails)
